@@ -2,15 +2,10 @@ node {
     def app
 
     stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
-
         checkout scm
     }
 
     stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-
         app = docker.build("gauravbhaskar84/flask-api")
     }
 
@@ -22,6 +17,5 @@ node {
     }
     stage('Running the container') {
         docker.image(gauravbhaskar84/flask-api:latest).withrun{-p5000:5000}
-        #sh "docker run -p5000:5000 --name python-app-$BUILD_NUMBER gauravbhaskar84/flask-api:latest"
     }
 }
