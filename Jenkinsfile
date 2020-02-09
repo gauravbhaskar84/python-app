@@ -21,6 +21,6 @@ node {
         }
     }
     stage('Running the container') {
-        docker.image('gauravbhaskar84/flask-api:latest').withRun {'-p5000:5000'}
+        docker.image('gauravbhaskar84/flask-api:latest').run {'-p5000:5000'}
     }
 }
