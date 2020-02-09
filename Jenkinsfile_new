@@ -5,7 +5,6 @@ pipeline {
     dockerImage = 'https://registry.hub.docker.com'
   }
   agent any
-  tools {nodejs "node" }
   stages {
     stage('Clone repository') {
       steps{
