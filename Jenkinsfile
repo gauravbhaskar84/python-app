@@ -14,9 +14,6 @@ node {
         app = docker.build("gauravbhaskar84/flask-api")
     }
 
-    stage('Remove Unused docker image') {
-        sh "docker rmi $registry:$BUILD_NUMBER"
-    }
     stage('Push image') {
             docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             app.push("${env.BUILD_NUMBER}")
@@ -24,6 +21,7 @@ node {
         }
     }
     stage('Running the container') {
-        sh "docker run -p5000:5000 --name python-app-$BUILD_NUMBER gauravbhaskar84/flask-api:latest"
+        docker.image(gauravbhaskar84/flask-api:latest).withrun{-p5000:5000}
+        #sh "docker run -p5000:5000 --name python-app-$BUILD_NUMBER gauravbhaskar84/flask-api:latest"
     }
 }
