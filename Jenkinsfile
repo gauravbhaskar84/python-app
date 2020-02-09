@@ -22,6 +22,5 @@ node {
     }
     stage('Running the container') {
         docker.image(gauravbhaskar84/flask-api:latest).withrun{-p5000:5000}
-        #sh "docker run -p5000:5000 --name python-app-$BUILD_NUMBER gauravbhaskar84/flask-api:latest"
     }
 }
