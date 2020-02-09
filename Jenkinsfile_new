@@ -34,7 +34,7 @@ pipeline {
     }
     stage('Run the container') {
       steps{
-        sh "docker run -p5000:5000 --name python-app-$BUILD_NUMBER gauravbhaskar84/flask-api:latest -d"
+        sh "docker run -p5000:5000 -d --name python-app-$BUILD_NUMBER gauravbhaskar84/flask-api:latest"
       }
     }
   }
