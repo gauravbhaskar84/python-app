@@ -8,7 +8,9 @@ pipeline {
   tools {nodejs "node" }
   stages {
     stage('Clone repository') {
-      checkout scm
+      steps{
+        git 'https://github.com/gauravbhaskar84/python-app.git'
+        }
       }
     stage('Building image') {
       steps{
